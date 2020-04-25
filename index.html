@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="bootstrap/css/fontawesome-all.css">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="bootstrap/css/mdb.css">
+<link rel="stylesheet" href="bootstrap/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+
+
+<title>test</title>
+<style>
+body{
+    font-family: Arial, sans-serif;
+}
+
+aside{
+    background-color: #3F3FBF;
+    float: left ;
+    width: 200px;
+    height: 500px;
+    text-align: center;
+    
+    border-bottom-left-radius: 20px;
+}
+aside ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+aside ul li a{
+    text-decoration: none;
+    color: white;
+    padding: 14px 25px;
+    display: block;
+}
+aside ul li h2{
+    background-color:#3FBFBF;
+    border-top-left-radius:20px ;
+
+    color: white;
+}
+aside ul li a:hover{
+    background-color:rgba(137,148,116,0.3);
+}
+section{
+    background-color:whitesmoke;
+    padding: 10px;
+        color: black;
+    margin-left: 200px;
+    margin-top: 10px;
+    height: 500px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Side Bar -->
+
+<aside>
+<ul>
+<li>
+    <h2>Business Name</h2>
+</li>
+<li>
+    <a href="#"><i class="fa fa-braille"></i>
+        DATABOARD</a>
+</li>
+<li>
+    <a href="#"><i class="fa fa-book"></i>
+        REPORT</a>
+</li>
+<li>
+    <a href="#"><i class="fa fa-clone"></i>
+        SERVICES</a>
+</li>
+<li>
+    <a href="#">
+        <i class="fa fa-heart"></i>
+FAVPOITES</a>
+</li>
+<li>
+    <a href="#"><i class="fa fa-star"></i>
+        SAVED</a>
+</li>
+<br/>
+<br/>
+<br/>
+
+<hr/>
+<li>
+<a href="#"><i class="fa fa-cog"></i>
+    SETTING</a>
+</li>
+
+</ul>
+</aside>
+<!-- Sports Section -->
+<section>
+<div class="container border-dark">
+<div class="row">
+    <div class=" col-sm-4 mt-2 bb">
+        <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            CATEGORY
+            </a>
+    </div>
+    <div class=" col-sm-4 mt-2 bb">
+        <a class="nav-link" href="#">Search</a>
+    </div>
+    <div class=" col-sm-2 mt-2 bb">
+        <i class="fa fa-user-circle"></i>
+</div>
+<div class=" col-sm-2 mt-2 bb">
+        <i class="fas fa-bell"></i>
+    </div>
+</div>
+<div class="row">
+           <div class="col-md-4">
+                <div class="container border dark aa">
+                    <div class="row text-center ">
+                        <div class="col-md-4 mt-4">
+                <h2 class="font-weight-bold">$2.750</h2>
+<p class="card-desc"><small>LOREMIpsum</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="container border dark  cc">
+                    <div class="row text-center ">
+                        <div class="col-md-4 mt-4">
+            <h2 class="font-weight-bold ">$750</h2>
+            <p class="card-desc"><small>LOREMIpsum</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="container border dark dd">
+                    <div class="row text-center ">
+                        <div class="col-md-4 mt-4 ">
+                            <h2 class="font-weight-bold ">$5.450</h2>
+                            <p class="card-desc"><small>LOREM IPSIM</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+</div> 
+<div class="row" >
+<div class="col-md-6">
+<canvas id="myChart" >
+</canvas>
+<script>
+   var data = {
+  labels: [
+    "Red",
+    "Blue",
+  ],
+  datasets: [
+    {
+      data: [50, 50],
+      backgroundColor: [
+        "#FFF",
+        "#36A2EB"
+      ],
+      hoverBackgroundColor: [
+        "#FFF",
+        "#FFF"
+      ]
+    }]
+};
+
+var promisedDeliveryChart = new Chart(document.getElementById('myChart'), {
+  type: 'doughnut',
+  data: data,
+  options: {
+  	responsive: true,
+    legend: {
+      display: false
+    }
+  }
+});
+
+Chart.pluginService.register({
+  beforeDraw: function(chart) {
+    var width = chart.chart.width,
+        height = chart.chart.height,
+        ctx = chart.chart.ctx;
+
+    ctx.restore();
+    var fontSize = (height / 114).toFixed(2);
+    ctx.font = fontSize + "em sans-serif";
+    ctx.textBaseline = "middle";
+
+    var text = "50%",
+        textX = Math.round((width - ctx.measureText(text).width) / 2),
+        textY = height / 2;
+
+    ctx.fillText(text, textX, textY);
+    ctx.save();
+  }
+});
+    </script>
+</div>
+    <div class="col-sm-6">
+    <canvas id="myChart2"></canvas>
+    <script>
+        var ctx2 = document.getElementById('myChart2').getContext('2d');
+        var myChart = new Chart(ctx2, {
+            type: 'line',
+            data: {
+            labels: ['a', 'b', 'c', 'd', 'c', 'e', 'f'],
+            datasets: [{
+                label: 'Lorem ipsum dopor',
+                data: [12, 19, 3, 55, 6, 3, 7],
+                backgroundColor: "rgba(63,191,191,1)"
+            }, {
+                label: 'Lorem ipsum dolor',
+                data: [2, 29, 5, 5, 2, 3, 10],
+                backgroundColor: "rgba(63,63,191,1)"
+            }]
+            }
+        });
+        </script>
+    </div>
+</div>
+</div>
+</section>
+</body>
+</html>
